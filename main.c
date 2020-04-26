@@ -18,16 +18,19 @@ int main(){
 	Deque aux = deque_createDeque();
 
 	Archivo reciente = NULL;
+	Archivo anterior = NULL;
+	Archivo siguiente = NULL;
+	int nArchivos = 0;
 
 	while(menu != 2){
 		printf("1)Abrir Archivo\n"
 				"2)Salir\n");
-		if(reciente)
+		if(nArchivos >= 1)
 			printf("3)Mostrar reciente\n"
 					"4)Mostrar Anterior\n"
 					"5)Mostrar siguiente\n");
 
-		if(deque_size(principal) >= 2)
+		if(nArchivos >= 3)
 			printf("6)Mostrar primero"
 					"7)Mostrar Ultimo");
 
@@ -35,8 +38,18 @@ int main(){
 
 		switch(menu){
 		case 1:
+			if(anterior)
+				deque_addFront(principal, anterior);
+
+			if(reciente)
+				anterior = reciente;
+
 			reciente = leerArchivo();
+
 			printArchivo(reciente);
+
+
+			nArchivos++;
 			break;
 
 
