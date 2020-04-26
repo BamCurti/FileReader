@@ -41,3 +41,10 @@ Type String(char *s){
 		new = strdup(s);
 	return (Type)new;
 }
+
+int cmpInt(Type k1, Type k2){
+	int a=*(int*)k1;
+	int b=*(int*)k2;
+	return a - b;
+}
+

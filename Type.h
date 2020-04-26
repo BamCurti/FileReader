@@ -19,4 +19,6 @@ Type Char(char);
 
 Type String(char *);
 
+int cmpInt(Type, Type);
+
 #endif /* TYPE_H_ */

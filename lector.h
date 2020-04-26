@@ -7,20 +7,27 @@
 
 #ifndef LECTOR_H_
 #define LECTOR_H_
+#include "deque.h"
 
-typedef struct str_archivo Archivo;
-typedef struct str_lector Lector;
+typedef struct str_Archivo *Archivo;
 
-Lector crearLector();
+//FUNCIONES LISTAS
 char* leerString();
+void readLine(char** , int *);
+void reallocString(char** , int *);
 Archivo leerArchivo();
 void printArchivo(Archivo);
-void printMenu(Lector);
-void lector_leerArchivo(Lector);
-void lector_mostrarReciente(Lector);
-void lector_mostrarAnterior(Lector);
-void lector_mostrarSiguiente(Lector);
-void lector_mostrarPrimero(Lector);
-void lector_mostrarUltimo(Lector);
+//FUNCIONES A PROGRAMAR
+
+void printMenu(Deque);
+void lector_leerArchivo(Deque);
+void lector_mostrarReciente(Deque);
+void lector_mostrarAnterior(Deque);
+void lector_mostrarSiguiente(Deque);
+void lector_mostrarPrimero(Deque);
+void lector_mostrarUltimo(Deque);
+
+
+
 
 #endif /* LECTOR_H_ */
