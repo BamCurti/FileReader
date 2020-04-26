@@ -8,18 +8,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "type.h"
-#include "deque.h"
+#include "stack.h"
 #include "lector.h"
 
 int main(){
 	setbuf(stdout, NULL);
 	int menu = 0;
-	Deque principal = deque_createDeque();
-	Deque aux = deque_createDeque();
+	Stack anterior = stack_create();
+	Stack siguiente = stack_create();
 
 	Archivo reciente = NULL;
-	Archivo anterior = NULL;
-	Archivo siguiente = NULL;
+
 	int nArchivos = 0;
 
 	while(menu != 2){
@@ -38,11 +37,8 @@ int main(){
 
 		switch(menu){
 		case 1:
-			if(anterior)
-				deque_addFront(principal, anterior);
-
 			if(reciente)
-				anterior = reciente;
+				stack_push(anterior, reciente);
 
 			reciente = leerArchivo();
 

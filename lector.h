@@ -7,7 +7,6 @@
 
 #ifndef LECTOR_H_
 #define LECTOR_H_
-#include "deque.h"
 
 typedef struct str_Archivo *Archivo;
 
@@ -19,13 +18,13 @@ Archivo leerArchivo();
 void printArchivo(Archivo);
 //FUNCIONES A PROGRAMAR
 
-void printMenu(Deque);
-void lector_leerArchivo(Deque);
-void lector_mostrarReciente(Deque);
-void lector_mostrarAnterior(Deque);
-void lector_mostrarSiguiente(Deque);
-void lector_mostrarPrimero(Deque);
-void lector_mostrarUltimo(Deque);
+void printMenu(Stack);
+void lector_leerArchivo(Stack);
+void lector_mostrarReciente(Stack);
+void lector_mostrarAnterior(Stack);
+void lector_mostrarSiguiente(Stack);
+void lector_mostrarPrimero(Stack);
+void lector_mostrarUltimo(Stack);
 
 
 

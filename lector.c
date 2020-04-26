@@ -6,7 +6,8 @@
  */
 #include "lector.h"
 #include "Type.h"
-#include "deque.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 struct str_Archivo{
 	char* info;
