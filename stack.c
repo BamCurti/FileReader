@@ -31,7 +31,7 @@ Stack stack_create(){
 }
 boolean stack_isEmpty(Stack stack){
 	if(stack){
-		if(stack->top == NULL)	return FALSE;
+		if(stack->top)	return FALSE;
 	}
 	return TRUE;
 }

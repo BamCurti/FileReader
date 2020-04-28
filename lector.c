@@ -6,6 +6,7 @@
  */
 #include "lector.h"
 #include "Type.h"
+#include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -79,5 +80,13 @@ Archivo leerArchivo(){
 	return new;
 }
 void printArchivo(Archivo a){
+	printf("Archivo: %s\n", a->titulo);
 	printf("%s\n", a->info);
+	printf("\n");
+}
+void lector_descargarDatos(Stack origen, Stack destino, Archivo medio){
+	while(!stack_isEmpty(origen)){
+		medio = stack_pop(origen);
+		stack_push(destino, medio);
+	}
 }

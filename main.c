@@ -30,13 +30,18 @@ int main(){
 					"5)Mostrar siguiente\n");
 
 		if(nArchivos >= 3)
-			printf("6)Mostrar primero"
+			printf("6)Mostrar primero\n"
 					"7)Mostrar Ultimo");
+
+		printf("Seleccione opcion: ");
 
 		scanf("%d", &menu);
 
 		switch(menu){
 		case 1:
+			if(!stack_isEmpty(siguiente))
+				lector_descargarDatos(siguiente, anterior, reciente);
+
 			if(reciente)
 				stack_push(anterior, reciente);
 
@@ -48,6 +53,20 @@ int main(){
 			nArchivos++;
 			break;
 
+		case 3://Mostrar reciente
+			printArchivo(reciente);
+			break;
+
+		case 4://Mostrar anterior
+			if(stack_isEmpty(anterior))
+				printf("No existe archivo anterior\n");
+
+			else{
+			stack_push(siguiente, reciente);
+			reciente = stack_pop(anterior);
+			printArchivo(reciente);
+			}
+			break;
 
 		}
 
