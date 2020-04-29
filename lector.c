@@ -9,6 +9,7 @@
 #include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct str_Archivo{
 	char* info;
@@ -84,9 +85,19 @@ void printArchivo(Archivo a){
 	printf("%s\n", a->info);
 	printf("\n");
 }
-void lector_descargarDatos(Stack origen, Stack destino, Archivo medio){
-	while(!stack_isEmpty(origen)){
-		medio = stack_pop(origen);
-		stack_push(destino, medio);
+void lector_descargarDatos(Stack *origen, Stack *destino, Archivo *medio){
+	while(stack_size(*origen)){
+		stack_push(*destino, *medio);
+		*medio = stack_pop(*origen);
 	}
+}
+boolean lector_isTheSame(Archivo a, Archivo b){
+	boolean status = FALSE;
+	if(a == NULL || b == NULL)
+		return FALSE;
+
+	int r = strcmp(a->info,b->info);
+	if(r == 0) status = TRUE;
+
+	return status;
 }

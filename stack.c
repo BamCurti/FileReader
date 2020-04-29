@@ -35,7 +35,6 @@ boolean stack_isEmpty(Stack stack){
 	}
 	return TRUE;
 }
-
 void stack_push(Stack s, Type d){
 	if(s){
 		//Si la pila existe
@@ -79,8 +78,10 @@ Type stack_top(Stack s){
 Type stack_pop(Stack s){
 	Type dato = stack_top(s);
 	if(dato){
+		Node temp = s->top;
 		s->top = s->top->prior;
 		s->size--;
+		free(temp);
 	}
 
 	return dato;

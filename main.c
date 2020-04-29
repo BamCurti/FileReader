@@ -18,6 +18,7 @@ int main(){
 	Stack siguiente = stack_create();
 
 	Archivo reciente = NULL;
+	Archivo temp = NULL;
 
 	int nArchivos = 0;
 
@@ -31,7 +32,7 @@ int main(){
 
 		if(nArchivos >= 3)
 			printf("6)Mostrar primero\n"
-					"7)Mostrar Ultimo");
+					"7)Mostrar Ultimo\n");
 
 		printf("Seleccione opcion: ");
 
@@ -39,18 +40,27 @@ int main(){
 
 		switch(menu){
 		case 1:
-			if(!stack_isEmpty(siguiente))
-				lector_descargarDatos(siguiente, anterior, reciente);
+			temp = leerArchivo();
+			lector_descargarDatos(&siguiente, &anterior, &reciente);
 
-			if(reciente)
-				stack_push(anterior, reciente);
+			if(!lector_isTheSame(temp, reciente)){
 
-			reciente = leerArchivo();
+				if(reciente)
+					stack_push(anterior, reciente);
 
-			printArchivo(reciente);
-
+				reciente = temp;
+				printArchivo(reciente);
+			}
+			else	printf("No se realizó cambios\n\n");
 
 			nArchivos++;
+			break;
+
+		case 2:
+			stack_destroy(siguiente);
+			stack_destroy(anterior);
+			free(reciente);
+			free(temp);
 			break;
 
 		case 3://Mostrar reciente
@@ -59,7 +69,7 @@ int main(){
 
 		case 4://Mostrar anterior
 			if(stack_isEmpty(anterior))
-				printf("No existe archivo anterior\n");
+				printf("No existe archivo anterior\n\n");
 
 			else{
 			stack_push(siguiente, reciente);
@@ -68,13 +78,28 @@ int main(){
 			}
 			break;
 
+		case 5: //Mostrar siguiente
+			if(stack_isEmpty(siguiente))
+				printf("No existe archivo siguiente\n\n");
+
+			else{
+			stack_push(anterior, reciente);
+			reciente = stack_pop(siguiente);
+			printArchivo(reciente);
+			}
+			break;
+
+		case 6://mostrar Primero
+			lector_descargarDatos(&anterior, &siguiente, &reciente);
+			printArchivo(reciente);
+			break;
+
+		case 7://mostrar Primero
+			lector_descargarDatos(&siguiente, &anterior, &reciente);
+			printArchivo(reciente);
+			break;
 		}
-
-
-
 	}
-
-
 
 	return 0;
 }
